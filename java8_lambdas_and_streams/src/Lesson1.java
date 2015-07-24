@@ -48,6 +48,9 @@ public class Lesson1 {
         "alpha", "bravo", "charlie", "delta", "echo", "foxtrot");
 
     /* YOUR CODE HERE */
+    StringBuffer sb = new StringBuffer();
+    list.forEach(s -> sb.append(s.charAt(0)));
+    System.out.println(sb.toString());
   }
 
   /**
@@ -60,6 +63,8 @@ public class Lesson1 {
         "alpha", "bravo", "charlie", "delta", "echo", "foxtrot"));
 
     /* YOUR CODE HERE */
+    list.removeIf(s -> s.length() % 2 == 1);
+    list.forEach(System.out::println);
   }
 
   /**
@@ -72,6 +77,8 @@ public class Lesson1 {
         "alpha", "bravo", "charlie", "delta", "echo", "foxtrot"));
 
     /* YOUR CODE HERE */
+    list.replaceAll(String::toUpperCase);
+    list.forEach(System.out::println);
   }
 
   /**
@@ -87,6 +94,10 @@ public class Lesson1 {
     map.put("a", 1);
 
     /* YOUR CODE HERE */
+    StringBuffer sb = new StringBuffer();
+    map.forEach((String k, Integer v) -> sb.append("("+ k + ","+ v + ")"));
+    System.out.println(sb.toString());
+
   }
 
   /**
@@ -98,6 +109,9 @@ public class Lesson1 {
     List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
     /* YOUR CODE HERE */
+    new Thread(()->{
+      list.forEach(System.out::print);
+    }).start();
   }
 
   /**
