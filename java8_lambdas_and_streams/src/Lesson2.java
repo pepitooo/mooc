@@ -9,7 +9,10 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author Speakjava (simon.ritter@oracle.com)
@@ -51,6 +54,9 @@ public class Lesson2 {
         "The", "Quick", "BROWN", "Fox", "Jumped", "Over", "The", "LAZY", "DOG");
 
     /* YOUR CODE HERE */
+    list.stream()
+            .map(String::toLowerCase)
+            .forEach(System.out::println);
   }
 
   /**
@@ -64,6 +70,11 @@ public class Lesson2 {
         "The", "Quick", "BROWN", "Fox", "Jumped", "Over", "The", "LAZY", "DOG");
 
     /* YOUR CODE HERE */
+
+    list.stream()
+            .filter(s -> s.length() % 2 == 1)
+            .map(String::toLowerCase)
+            .forEach(System.out::println);
   }
 
   /**
@@ -77,6 +88,11 @@ public class Lesson2 {
         "The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog");
 
     /* YOUR CODE HERE */
+    System.out.println(
+            list.stream()
+              .skip(1)
+              .limit(3)
+              .collect(Collectors.joining("-")));
   }
 
   /**
@@ -86,6 +102,9 @@ public class Lesson2 {
     try (BufferedReader reader = Files.newBufferedReader(
         Paths.get("SonnetI.txt"), StandardCharsets.UTF_8)) {
       /* YOUR CODE HERE */
+      System.out.println(
+              reader.lines()
+                      .count());
     }
   }
   
@@ -98,7 +117,10 @@ public class Lesson2 {
   private void exercise5() throws IOException {
     try (BufferedReader reader = Files.newBufferedReader(
         Paths.get("SonnetI.txt"), StandardCharsets.UTF_8)) {
-      /* YOUR CODE HERE */
+      reader.lines()
+              .flatMap(word -> Stream.of(word.split(WORD_REGEXP)))
+              .distinct()
+              .forEach(System.out::println);
     }
   }
   
@@ -111,6 +133,12 @@ public class Lesson2 {
     try (BufferedReader reader = Files.newBufferedReader(
         Paths.get("SonnetI.txt"), StandardCharsets.UTF_8)) {
       /* YOUR CODE HERE */
+      reader.lines()
+              .flatMap(word -> Stream.of(word.split(WORD_REGEXP)))
+              .map(String::toLowerCase)
+              .distinct()
+              .sorted()
+              .forEachOrdered(System.out::println);
     }
   }
   
@@ -121,6 +149,12 @@ public class Lesson2 {
     try (BufferedReader reader = Files.newBufferedReader(
         Paths.get("SonnetI.txt"), StandardCharsets.UTF_8)) {
       /* YOUR CODE HERE */
+      reader.lines()
+              .flatMap(word -> Stream.of(word.split(WORD_REGEXP)))
+              .map(String::toLowerCase)
+              .distinct()
+              .sorted(Comparator.comparing(s -> s.length()))
+              .forEachOrdered(System.out::println);
     }
   }
 
