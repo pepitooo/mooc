@@ -101,6 +101,7 @@ public class Lesson2 {
   private void exercise4() throws IOException {
     try (BufferedReader reader = Files.newBufferedReader(
         Paths.get("SonnetI.txt"), StandardCharsets.UTF_8)) {
+
       /* YOUR CODE HERE */
       System.out.println(
               reader.lines()
@@ -117,6 +118,8 @@ public class Lesson2 {
   private void exercise5() throws IOException {
     try (BufferedReader reader = Files.newBufferedReader(
         Paths.get("SonnetI.txt"), StandardCharsets.UTF_8)) {
+
+      /* YOUR CODE HERE */
       reader.lines()
               .flatMap(word -> Stream.of(word.split(WORD_REGEXP)))
               .distinct()
