@@ -1,4 +1,4 @@
-package net.kapouet.project.euler.Problem22;
+package net.kapouet.project.euler;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -23,7 +23,7 @@ public class Problem42Test {
 
     @Test
     public void testGetNameValue() throws Exception {
-        assertEquals(19, Problem42.getNameValue("SKY"));
+        assertEquals(55, Problem42.getNameValue("SKY"));
     }
 
     @Test

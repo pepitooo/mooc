@@ -1,4 +1,4 @@
-package net.kapouet.project.euler.Problem22;
+package net.kapouet.project.euler;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -8,8 +8,6 @@ import org.junit.Test;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by pepito on 28/07/2015.
