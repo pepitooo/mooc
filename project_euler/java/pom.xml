@@ -12,6 +12,7 @@
  
   <modules>
     <module>problem_22</module>
+    <module>problem_42</module>
   </modules>
 
   <build>
