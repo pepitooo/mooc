@@ -69,7 +69,16 @@ public class Lesson3 {
     int[][] distances = new int[LIST_SIZE][LIST_SIZE];
     
     // YOUR CODE HERE
-    
+    int[] idx = {0};
+    Stream<String> stream = wordList.stream();
+    if (parallel)
+      stream = stream.parallel();
+
+    stream.map(word -> IntStream.range(0, LIST_SIZE)
+                            .map(i -> Levenshtein.lev(word, wordList.get(i)))
+                            .toArray())
+            .forEach(levArray -> distances[idx[0]++] = levArray);
+
     return distances;
   }
   
@@ -82,8 +91,13 @@ public class Lesson3 {
    */
   static List<String> processWords(List<String> wordList, boolean parallel) {
     // YOUR CODE HERE
-    
-    return null;
+    Stream<String> stream = wordList.stream();
+    if (parallel)
+      stream = stream.parallel();
+
+    List<String> sorted = stream.sorted().distinct().collect(Collectors.toList());
+
+    return sorted;
   }
 
   /**
@@ -99,7 +113,7 @@ public class Lesson3 {
     measure("Sequential", () -> computeLevenshtein(wordList, false));
     measure("Parallel", () -> computeLevenshtein(wordList, true));
     
-//    measure("Sequential", () -> processWords(wordList, false));
-//    measure("Parallel", () -> processWords(wordList, true));
+    measure("Sequential", () -> processWords(wordList, false));
+    measure("Parallel", () -> processWords(wordList, true));
   }
 }
